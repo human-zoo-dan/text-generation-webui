@@ -274,7 +274,7 @@ def generate_reply_HF(question, original_question, seed, state, stopping_strings
         generate_params.update({'inputs_embeds': inputs_embeds})
 
     # Stopping criteria / eos token
-    eos_token_ids = [shared.tokenizer.eos_token_id] if shared.tokenizer.eos_token_id is not None else []
+    eos_token_ids = [shared.tokenizer.eos_token_id] if shared.tokenizer.eos_token_id is not None else [0]
     generate_params['eos_token_id'] = eos_token_ids
     generate_params['stopping_criteria'] = transformers.StoppingCriteriaList()
     generate_params['stopping_criteria'].append(_StopEverythingStoppingCriteria())
